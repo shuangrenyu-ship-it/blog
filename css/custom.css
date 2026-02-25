@@ -98,39 +98,3 @@
 #page-header::before {
   background: transparent !important;
 }
-
-/* =======================================================
-   顶部导航栏：独立黑夜切换按钮样式
-   ======================================================= */
-#nav-dark-toggle {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  margin: 0 8px; /* 调整和旁边搜索框的距离 */
-}
-
-/* 圆形按钮本体样式 */
-#nav-dark-toggle a.site-page {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 36px !important; /* 按钮的宽度 */
-  height: 36px !important; /* 按钮的高度 */
-  padding: 0 !important; /* 去除主题默认的挤压 */
-  border-radius: 50%; /* 变成完美的圆形 */
-  background: rgba(0, 0, 0, 0.4) !important; /* 默认深灰色半透明底色 */
-  color: #fff !important; /* 图标颜色设为纯白 */
-  font-size: 16px; /* 图标大小 */
-  transition: all 0.3s ease; /* 增加过渡动画 */
-}
-
-/* 鼠标悬停时的效果 (微微放大并变色) */
-#nav-dark-toggle a.site-page:hover {
-  background: #ff7242 !important; /* 鼠标放上去变成温暖的橘红色，可自行修改 */
-  transform: scale(1.1); /* 鼠标放上去微微放大 */
-}
-
-/* 黑夜模式下，让这个按钮的底色变稍微淡一点的灰，融入背景 */
-[data-theme="dark"] #nav-dark-toggle a.site-page {
-  background: rgba(255, 255, 255, 0.2) !important;
-}
