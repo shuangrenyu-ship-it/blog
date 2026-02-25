@@ -60,25 +60,25 @@
   border-bottom: 3px solid #ff7242 !important; /* 黑夜模式下变成温暖的橘红色 */
   color: #ff7242 !important;
 }
-/* 鼠标点击花朵样式 */
-.click-flower {
+
+.colorful-particle {
   position: fixed;
-  z-index: 999999; /* 确保在最前面 */
-  pointer-events: none; /* 穿透点击，不影响点别的东西 */
-  animation: flower-bloom 0.8s ease-out forwards; /* 0.8秒内绽放消失 */
+  /* 把原来的 10px 改大，比如 15px 或 20px */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  animation: particle-burst 1s ease-out forwards;
 }
 
-@keyframes flower-bloom {
+@keyframes particle-burst {
   0% {
-    transform: scale(0) rotate(0deg);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
-  50% {
-    transform: scale(1.2) rotate(20deg); /* 稍微变大并旋转一点 */
-    opacity: 0.9;
-  }
   100% {
-    transform: scale(1.5) rotate(40deg); /* 最后飘散变大消失 */
+    transform: translate(var(--x), var(--y)) scale(0);
     opacity: 0;
   }
 }
