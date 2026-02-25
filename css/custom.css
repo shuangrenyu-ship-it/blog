@@ -43,3 +43,20 @@
   /* 黑夜模式下用黑灰色的半透明 */
   background: rgba(30, 30, 30, 0.6) !important;
 }
+/* =======================================================
+   导航栏当前页面高亮 (下边框)
+   ======================================================= */
+#nav .menus_items .menus_item > a.active {
+  /* 底部边框：3px厚度，实线，颜色为主题蓝（你可以自己改颜色） */
+  border-bottom: 3px solid #ff7a85 !important;
+  /* 让边框和文字稍微拉开一点距离，看起来更透气 */
+  padding-bottom: 5px !important;
+  /* 可选：让当前页面的文字也变成蓝色，更加醒目 */
+  color: #49b1f5 !important;
+}
+
+/* 黑夜模式下的适配（如果你启用了黑夜模式） */
+[data-theme="dark"] #nav .menus_items .menus_item > a.active {
+  border-bottom: 3px solid #ff7242 !important; /* 黑夜模式下变成温暖的橘红色 */
+  color: #ff7242 !important;
+}
