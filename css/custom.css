@@ -3,19 +3,18 @@
    ======================================================= */
 
 /* 1. 让文章列表、文章页、侧边栏、分类标签页的背景变半透明 */
+/* 1. 让所有类型的页面背景全部变半透明 */
 #recent-posts > .recent-post-item,
 .card-widget,
 #post,
 #page,
 #archive,
 #tag,
-#category {
-  /* 这里的 0.7 是透明度，数字越小越透明，0.9是微透，0.5是很透 */
-  background: rgba(255, 255, 255, 0.7) !important;
-  /* 加上这一行会有一种高级的磨砂模糊感，不想模糊可以删掉这一行 */
+#category,
+.layout > div:first-child:not(.recent-posts) {
+  background: rgba(255, 255, 255, 0.7) !important; /* 0.7是透明度，可自行修改 */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  /* 稍微圆润一点的边角更好看 */
   border-radius: 15px !important;
   border: none !important;
 }
