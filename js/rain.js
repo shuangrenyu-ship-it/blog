@@ -6,8 +6,8 @@
   var h = (canvas.height = window.innerHeight);
   var raindrops = [];
 
-  // 🎛️ 1. 密度改小了，现在不会显得太拥挤
-  var rainDensity = 80;
+  // 🎛️ 密度适中：还原雨隐村连绵不断的氛围
+  var rainDensity = 70;
 
   window.addEventListener("resize", function () {
     w = canvas.width = window.innerWidth;
@@ -15,15 +15,30 @@
   });
 
   function Raindrop() {
-    this.x = Math.random() * w;
+    this.reset();
+    // 初始状态让雨滴随机分布在满屏
     this.y = Math.random() * h;
-    // 🎛️ 2. 雨丝变长了，增加二次元特有的动感
-    this.length = Math.random() * 30 + 20;
-    this.speedY = Math.random() * 15 + 15;
-    this.speedX = -Math.random() * 3;
-    // 🎛️ 3. 透明度下限拉高，让雨滴在暗色或亮色背景下都能看清
-    this.opacity = Math.random() * 0.5 + 0.4;
   }
+
+  Raindrop.prototype.reset = function () {
+    this.x = Math.random() * w;
+    this.y = -20;
+
+    // 制造远近层次感
+    var depth = Math.random();
+
+    // 速度：带有一定重力的飘落，不急躁也不太慢
+    this.speedY = depth * 5 + 6;
+
+    // 风向：细微的倾斜角
+    this.speedX = depth * -1.5 - Math.random() * 1;
+
+    // 雨丝长度：长短不一，错落有致
+    this.length = depth * 15 + 10;
+
+    // 透明度提高：确保在复杂的背景图上也能清楚看到雨丝
+    this.opacity = depth * 0.4 + 0.3;
+  };
 
   for (var i = 0; i < rainDensity; i++) {
     raindrops.push(new Raindrop());
@@ -38,18 +53,16 @@
       ctx.moveTo(r.x, r.y);
       ctx.lineTo(r.x + r.speedX, r.y + r.length);
 
-      // 🎛️ 4. 雨滴加粗了一点点
-      ctx.lineWidth = 2.0;
-      // 🎛️ 5. 颜色换成了非常通透的冷调青蓝色
-      ctx.strokeStyle = "rgba(210, 235, 255, " + r.opacity + ")";
+      ctx.lineWidth = 1.5;
+      // 💧 雨隐村专属配色：沉闷冷酷的灰蓝色 (Slate Blue / Grey)
+      ctx.strokeStyle = "rgba(110, 130, 155, " + r.opacity + ")";
       ctx.stroke();
 
       r.y += r.speedY;
       r.x += r.speedX;
 
-      if (r.y > h) {
-        r.y = -20;
-        r.x = Math.random() * w;
+      if (r.y > h || r.x < -20 || r.x > w + 20) {
+        r.reset();
       }
     }
     requestAnimationFrame(drawRain);

@@ -1,0 +1,46 @@
+/* =======================================================
+   全局毛玻璃半透明效果 (Glassmorphism)
+   ======================================================= */
+
+/* 1. 让文章列表、文章页、侧边栏、分类标签页的背景变半透明 */
+#recent-posts > .recent-post-item,
+.card-widget,
+#post,
+#page,
+#archive,
+#tag,
+#category {
+  /* 这里的 0.7 是透明度，数字越小越透明，0.9是微透，0.5是很透 */
+  background: rgba(255, 255, 255, 0.7) !important;
+  /* 加上这一行会有一种高级的磨砂模糊感，不想模糊可以删掉这一行 */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* 稍微圆润一点的边角更好看 */
+  border-radius: 15px !important;
+  border: none !important;
+}
+
+/* 2. 让顶部导航栏往下滚的时候也变成半透明 */
+#page-header.nav-fixed #nav {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* 3. 让最底部的页脚也变透明，融入背景 */
+#footer {
+  background: transparent !important;
+}
+
+/* 4. 黑夜模式下的半透明颜色适配 (如果你的博客开启了黑夜模式) */
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] .card-widget,
+[data-theme="dark"] #post,
+[data-theme="dark"] #page,
+[data-theme="dark"] #archive,
+[data-theme="dark"] #tag,
+[data-theme="dark"] #category,
+[data-theme="dark"] #page-header.nav-fixed #nav {
+  /* 黑夜模式下用黑灰色的半透明 */
+  background: rgba(30, 30, 30, 0.6) !important;
+}
