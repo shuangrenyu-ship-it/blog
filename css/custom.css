@@ -82,3 +82,19 @@
     opacity: 0;
   }
 }
+
+/* =======================================================
+   顶部横幅 (Banner) 毛玻璃效果 (暗色突出标题版)
+   ======================================================= */
+/* 让整个顶部区域变成深色半透明的毛玻璃，完美突出白色标题 */
+#page-header {
+  /* rgba(0,0,0)代表纯黑，0.5代表50%的透明度。如果你觉得不够黑，可以把0.5改成0.6或0.7 */
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* 去掉主题默认的暗色遮罩，只保留我们自定义的高级毛玻璃 */
+#page-header::before {
+  background: transparent !important;
+}
